@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import {Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import { useHistory} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import {useRouter} from 'next/router'
@@ -41,7 +40,7 @@ function Registeras(props) {
                   <Paper className={classes.paper}> <b>{page}  As</b>  </Paper>
         </Grid>
         </Grid> <br/> <br/>
-              <h2 style={{color:'blue'}}> {page} As </h2> <br/><br/>
+              {/* <h2 style={{color:'blue'}}> {page} As </h2> <br/><br/> */}
             <Button  variant="contained" style={{backgroundColor:"#398ccc"}}  onClick={() => handleChange('doctor')}  ><b>Doctor</b></Button> <br/> <br/>
             <Button variant="contained"style={{backgroundColor:"#398ccc"}}   onClick={() => handleChange('patient')}><b> Patient </b> </Button>
 

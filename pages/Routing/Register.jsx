@@ -12,7 +12,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import { useHistory, withRouter } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {doctor} from './Registerreducer';
 import {useRouter} from 'next/router'
@@ -50,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+back: {
+  backgroundColor:'light blue'
+}
 }));
 
  function Register() {
@@ -72,19 +74,22 @@ const {
     query:{role}
   } = router
 // let history=window
-   const onSubmit=()=>{
+   const onSubmit=(e)=>{
+    e.preventDefault();  
     let data={
       firstName:state.firstName,
       lastName:state.lastName,
       email:state.email,
       password:state.password
     }
+
     dispatch(doctor(data,role ))
    
-    router.push({pathname: '/Routing/Login', state: { role }});
+    router.push({pathname:'/Routing/Login', state: { role }});
    }
    
   return (
+    <div className={classes.back}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -179,6 +184,9 @@ const {
         <Copyright />
       </Box>
     </Container>
+    
+</div>
   );
 }
+
 export default (Register)

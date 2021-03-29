@@ -12,9 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import { useHistory } from "react-router-dom";
 import {useSelector} from 'react-redux';
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/router';
 
 function Copyright() {
   return (
@@ -65,8 +64,8 @@ export default function Login() {
 //   let role=history.location.state.role
   const doctorData= useSelector(state => state.doctorData);
   const patientData= useSelector(state => state.patientData);
-  console.log('doctorData',doctorData)
-      console.log('patientData',patientData)
+  // console.log('doctorData',doctorData)
+      // console.log('patientData',patientData)
 
 
           
@@ -78,15 +77,16 @@ export default function Login() {
     e.preventDefault();  
  
 let userData;
-debugger
+
 if(role === 'patient'){
   userData = patientData.filter(x => x.email === email);
 }else{
   userData = doctorData.filter(x => x.email === email);
 }
+console.log('data',userData)
 
-   if( userData[0].password === password){
-    router.push({pathname: '/Home', state: { role }});
+   if( userData.length > 0 && userData[0].password === password){
+    router.push({pathname: '/Routing/Home', state: { role }});
       }
       else{
         alert('please enter valid email and password')
